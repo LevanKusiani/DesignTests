@@ -10,7 +10,9 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
-            Person.New. 
+            var person = Builder_Pattern.Person.New.Called("levani").WorksAs("developer").IsOfGender(true).Build();
+
+            Console.WriteLine(person);
         }
     }
 }

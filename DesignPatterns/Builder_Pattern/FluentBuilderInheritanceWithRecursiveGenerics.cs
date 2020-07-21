@@ -19,7 +19,7 @@ namespace DesignPatterns.Builder_Pattern
 
         public override string ToString()
         {
-            return $"name: {name ?? "undefined"}, position: {position ?? "undefined"}";
+            return $"name: {name ?? "undefined"}, position: {position ?? "undefined"}, gender: {(gender ? "male" : "female" )}";
         }
     }
 
