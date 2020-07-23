@@ -4,22 +4,29 @@ using System.Text;
 
 namespace DesignPatterns.Builder_Pattern
 {
+    #region Run in MAIN
+
+    //var person = Builder_Pattern.Person.New.Called("levani").WorksAs("developer").IsOfGender(true).Build();
+
+    //Console.WriteLine(person);
+
+    #endregion
+
     public class Person
     {
         public string name;
         public bool gender;
         public string position;
 
-        public class Builder : PersonGenderBuilder<Builder>
+        public class Builder : PersonTestBuilder<Builder>
         {
-
         }
 
         public static Builder New => new Builder();
 
         public override string ToString()
         {
-            return $"name: {name ?? "undefined"}, position: {position ?? "undefined"}, gender: {(gender ? "male" : "female" )}";
+            return $"name: {name ?? "undefined"}, position: {position ?? "undefined"}, gender: {(gender ? "male" : "female")}";
         }
     }
 
@@ -63,6 +70,14 @@ namespace DesignPatterns.Builder_Pattern
         public T IsOfGender(bool gender)
         {
             person.gender = gender;
+            return (T)this;
+        }
+    }
+
+    public class PersonTestBuilder<T> : PersonGenderBuilder<PersonTestBuilder<T>> where T : PersonTestBuilder<T>
+    {
+        public T BuildSomething(string test)
+        {
             return (T)this;
         }
     }

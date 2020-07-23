@@ -10,9 +10,12 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
-            var person = Builder_Pattern.Person.New.Called("levani").WorksAs("developer").IsOfGender(true).Build();
+            var hb = new HumanBuilder();
+            Human human = hb
+                .Works.At("test").AsA("dev").Earning(1)
+                .Lives.LivesAt("test ave. 1").LivesIn("London").Postcode("123");
 
-            Console.WriteLine(person);
+            Console.WriteLine(human);
         }
     }
 }
